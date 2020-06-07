@@ -1,0 +1,24 @@
+{
+  "name": "customer-cli",
+  "version": "1.0.0",
+  "description": "A customer management command line tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malhotra-parul/customer-management-cli-app.git"
+  },
+  "keywords": [
+    "cli",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "Parul Malhotra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malhotra-parul/customer-management-cli-app/issues"
+  },
+  "homepage": "https://github.com/malhotra-parul/customer-management-cli-app#readme"
+}

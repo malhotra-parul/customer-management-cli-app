@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/malhotra-parul/customer-management-cli-app/issues"
   },
-  "homepage": "https://github.com/malhotra-parul/customer-management-cli-app#readme"
+  "homepage": "https://github.com/malhotra-parul/customer-management-cli-app#readme",
+  "dependencies": {
+    "commander": "^5.1.0",
+    "inquirer": "^7.1.0",
+    "mongoose": "^5.9.18"
+  }
 }

@@ -9,7 +9,6 @@ const options = {
 
 const db = mongoose.connect(mongoUri, options , err => {
     if(err) throw err;
-    console.log("DB connected!");
 });
 
 //import model
@@ -19,20 +18,21 @@ const Customer = require("./models/customer");
 const addCustomer = customer => {
     Customer.create(customer).then(customer => {
         console.info("Customer added!");
-        db.close();
-    });
+        mongoose.connection.close()
+    }).catch(err => console.error(err));
 }
 
 //Find a customer
 const findCustomer = name => {
     const search = new RegExp(name, "i");
     Customer.find({
-    $or: [{ firstName: search }, 
-          { lastName: search }]    
+    $or: [{ firstname: search }, 
+          { lastname: search }]    
     }).then(customer => {
         console.info(customer);
         console.info(`${customer.length} matches`);
-    })
+        mongoose.connection.close()
+    }).catch(err => console.error(err))
 }
 
 module.exports = {

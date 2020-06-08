@@ -39,7 +39,7 @@ const findCustomer = name => {
 const updateCustomer = (_id, customer) => {
     Customer.updateOne({_id}, customer)
             .then(customer => {
-                console.info(customer);
+                // console.info(customer);
                 console.info("Customer updated")
                 mongoose.connection.close()
             }).catch(err => console.error(err))
@@ -49,7 +49,7 @@ const updateCustomer = (_id, customer) => {
 const deleteCustomer = (_id) => {
     Customer.deleteOne({_id})
             .then(customer => {
-                console.info(customer);
+                // console.info(customer);
                 console.info("Customer removed")
                 mongoose.connection.close()
             }).catch(err => console.error(err))

@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "A customer management command line tool",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./commands.js",
   "scripts": {
     "start": "node index.js"
   },

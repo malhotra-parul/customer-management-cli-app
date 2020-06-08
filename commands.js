@@ -77,7 +77,7 @@ program
     })
 
 //remove customer
-program
+program 
     .command("delete <_id>")
     .alias("d")
     .description("Delete a customer")
@@ -89,5 +89,10 @@ program
     .alias("l")
     .description("List all customers")
     .action(()=> listCustomers());
+
+if (!process.argv.slice(2).length || !/[afudl]/.test(process.argv.slice(2))) {
+    program.outputHelp();
+    process.exit();
+}
 
 program.parse(process.argv);

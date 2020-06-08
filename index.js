@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const config = require("config");
 const mongoUri = config.get("mongoUri");
+const ora = require('ora');
 
 const options = {
     useUnifiedTopology: true,
@@ -15,11 +16,17 @@ const db = mongoose.connect(mongoUri, options , err => {
 const Customer = require("./models/customer");
 
 //Add customer
-const addCustomer = customer => {
-    Customer.create(customer).then(customer => {
+const addCustomer = async customer => {
+    try{
+        const throbber = ora("Customer creation in progress...").start();
+        const newCust = await Customer.create(customer);
+        throbber.stop();
         console.info("Customer added!");
         mongoose.connection.close()
-    }).catch(err => console.error(err));
+    }
+    catch(err){
+     console.error(err)
+    };
 }
 
 //Find a customer

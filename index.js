@@ -35,7 +35,40 @@ const findCustomer = name => {
     }).catch(err => console.error(err))
 }
 
+//update a customer
+const updateCustomer = (_id, customer) => {
+    Customer.updateOne({_id}, customer)
+            .then(customer => {
+                console.info(customer);
+                console.info("Customer updated")
+                mongoose.connection.close()
+            }).catch(err => console.error(err))
+}
+
+//delete a customer
+const deleteCustomer = (_id) => {
+    Customer.deleteOne({_id})
+            .then(customer => {
+                console.info(customer);
+                console.info("Customer removed")
+                mongoose.connection.close()
+            }).catch(err => console.error(err))
+}
+
+//list all customers
+const listCustomers = () => {
+    Customer.find()
+            .then(customers => {
+                console.info(customers);
+                console.info(`${customers.length} customers`);
+                mongoose.connection.close()
+            }).catch(err => console.error(err))
+}
+
 module.exports = {
     addCustomer,
-    findCustomer
+    findCustomer,
+    updateCustomer,
+    deleteCustomer,
+    listCustomers
 };

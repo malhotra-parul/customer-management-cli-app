@@ -1,6 +1,12 @@
 const program = require("commander");
 const { prompt } = require("inquirer");
-const { addCustomer, findCustomer } = require("./index");
+const { 
+    addCustomer, 
+    findCustomer,
+    updateCustomer,
+    deleteCustomer,
+    listCustomers
+ } = require("./index");
 
 
 //customer questions in an array of object
@@ -41,6 +47,8 @@ program
 //     }) 
 
 //using inquirer along with commander.js
+
+//add customer
 program
     .command("add")
     .alias("a")
@@ -49,6 +57,7 @@ program
         prompt(questions).then(answers => addCustomer(answers));
     })
 
+//find customer
 program
     .command("find <name>")
     .alias("f")
@@ -56,5 +65,28 @@ program
     .action(name=>{
         findCustomer(name);
     })
+
+//update customer
+program
+    .command("update <_id>")
+    .alias("u")
+    .description("Update a customer")
+    .action((_id)=> {
+        prompt(questions).then(answers => updateCustomer(_id, answers));
+    })
+
+//remove customer
+program
+    .command("delete <_id>")
+    .alias("d")
+    .description("Delete a customer")
+    .action(_id => deleteCustomer(_id));
+
+//list all customers
+program
+    .command("list")
+    .alias("l")
+    .description("List all customers")
+    .action(()=> listCustomers());
 
 program.parse(process.argv);
